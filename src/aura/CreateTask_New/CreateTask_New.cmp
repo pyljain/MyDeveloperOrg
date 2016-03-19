@@ -1,0 +1,9 @@
+<aura:component controller="newTaskController" >
+    
+    
+        <ui:inputText label="Task Name" aura:id="TaskId" /> 
+        <aura:registerEvent name="TaskCreatedEvent" type="c:TaskCreatedEvent"/>
+		<ui:button label="Create Task" press="{!c.createTaskClientController}"/>    
+  
+	
+</aura:component>

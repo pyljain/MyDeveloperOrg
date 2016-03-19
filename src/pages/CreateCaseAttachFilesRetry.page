@@ -1,0 +1,34 @@
+<apex:page standardController="Case" extensions="CaseControllerExtended">
+
+<apex:includeScript value="/soap/ajax/29.0/connection.js"/>
+<apex:includeScript value="/soap/ajax/29.0/apex.js"/>
+
+<apex:form title="Case Form" >
+    <apex:pageBlock title="Case Form" mode="edit">
+    <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Create Case"/>
+             <apex:param name="caseId" value="{!case.id}" assignTo="{!caseId}"/>
+    </apex:pageBlockButtons>
+    <apex:pageBlockSection title="Case Details" collapsible="true" columns="2" >
+             <apex:inputField value="{!Case.description}"/>
+             <apex:inputField value="{!case.subject}"/>
+             <apex:inputField value="{!case.status}"/>
+             <apex:inputField value="{!case.priority}"/>                                                 
+             <apex:inputField value="{!case.origin}">
+             </apex:inputField>
+     </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:form>
+<apex:form >
+    <apex:pageBlock title="Attach Documents">
+        <apex:pageBlockSection title="Upload Details" columns="2" collapsible="true">         
+             <apex:pageBlockSectionItem >
+                <!--  <apex:repeat value="{!attachments}" var="att"> -->
+                 <apex:inputFile value="{!attachment.body}" filename="{!filelabel}" id="file"/>
+                <!--  </apex:repeat> -->
+                <apex:commandButton value="Add More" action="{!addMore}"/>
+            </apex:pageBlockSectionItem>        
+        </apex:pageBlockSection>  
+    </apex:pageBlock>
+ </apex:form>
+</apex:page>

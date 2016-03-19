@@ -1,0 +1,35 @@
+<aura:component controller="AccountListController">
+    <ltng:require styles="/resource/SLDS0121/assets/styles/salesforce-lightning-design-system-ltng.css" />
+    <aura:attribute name="accounts" type="Account[]"/>
+    <aura:attribute name="parentName" type="String"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.getAccsController}"/>
+    <aura:registerEvent name="AccountSelectedEvent" type="c:AccountSelectedEvent"/>
+    <div class="slds">
+        <div class="slds-form-element">
+          <label class="slds-form-element__label" for="sample1">Please enter query</label>
+          <div class="slds-form-element__control">
+            <input id="sample1" class="slds-input" type="text" aura:id="sample1" placeholder="Filter Account Name By..." onkeyup="{!c.getAccsController}" />
+          </div>
+        </div>
+        <button class="slds-button slds-button--brand slds-button--small" onclick="{!c.getAccsController}">Run Query</button>
+        <table class="slds-table slds-table--bordered">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th class="slds-cell-shrink" scope="col">Name</th>
+                    <th class="slds-cell-shrink" scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.accounts}" var="item" indexVar="index">
+                    <tr class="slds-text-heading--label">
+                        <td>{!index}</td>
+                        <td onclick="{!c.passAccountID}" data-id="{!item.Id}">{!item.Name}</td>
+                        
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>		
+</aura:component>
+<!-- AccountSelectedEvent.evt -->

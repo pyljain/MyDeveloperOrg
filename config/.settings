@@ -1,0 +1,16 @@
+{
+    "projectName": "MyDeveloperOrg",
+    "username": "payalpatnaik@shekharpatnaik.com",
+    "id": "94451770-edce-11e5-98a5-ede0a901f22c",
+    "namespace": "",
+    "environment": "production",
+    "loginUrl": "https://login.salesforce.com/",
+    "workspace": "/Users/payal.jain/sfprojects",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

@@ -1,0 +1,29 @@
+<aura:component controller="Account_WeatherController">
+    
+    <ltng:require styles="/resource/bootstrap" scripts='/resource/jquery,/resource/bootstrapjs' afterScriptsLoaded="{!c.jsLoaded}" />    
+    <aura:attribute name="accountID" type="String" default="0019000000odDkz"/>  
+    <aura:attribute name="Low" type="String"/> 
+    <aura:attribute name="High" type="String"/> 
+    <aura:attribute name="MinTemp" type="String"/> 
+    <aura:attribute name="MaxTemp" type="String"/> 
+    <aura:attribute name="Forecast" type="String"/> 
+    <aura:registerEvent name="query_editRecord" type="c:query_editRecord"/>
+    <aura:handler name="init" value="{!this}" action="{!c.weathercontroller}"/>
+    
+   		<div class="col-md-3 bg-primary text-center" style="height:100%">
+          <h2>  <label> Minimum Temperature </label> <br></br>
+            <ui:outputText value="{!v.MinTemp}" /></h2>
+        
+        </div>
+        <div class="col-md-6 bg-info text-center background-image" style="height:100%">
+           <h1> <label class="text-align:center"> Forecast </label> <br></br>
+        	<ui:outputText value="{!v.Forecast}" /></h1>
+            <!--<img src="https://s-media-cache-ak0.pinimg.com/originals/47/76/e1/4776e163cc466942ab43871f39630eba.gif" class="img-circle text-center" alt="Responsive image"></img>-->
+        
+        </div>
+        <div class="col-md-3 bg-success text-center" style="height:100%">
+           <h2> <label> Maximum Temperature </label> <br></br>
+        	<ui:outputText value="{!v.MaxTemp}" />  </h2>      
+        </div>
+	
+</aura:component>

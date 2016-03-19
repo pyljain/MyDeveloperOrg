@@ -1,0 +1,13 @@
+<apex:page standardController="Contact" showHeader="true" tabStyle="contact" extensions="ContactWithTabs" >
+    <apex:tabPanel switchType="client" selectedTab="tabDetails" id="AccountTabPanel" tabClass="activeTab" inactiveTabClass="inactiveTab">
+        <apex:tab label="Details" id="tabDetails" name="ConDetails">
+            <apex:detail relatedList="false" title="true"/>              
+        </apex:tab>
+        <apex:tab label="Cases" name="Case" id="ConCases">
+             <apex:relatedList subject="{!contact}" list="cases" />           
+        </apex:tab>
+        <apex:tab label="Opportunities" name="ConOpportunities" id="ConOpportunities">
+             <apex:relatedList subject="{!contact}" list="opportunities" />        
+        </apex:tab>    
+    </apex:tabPanel>  
+</apex:page>

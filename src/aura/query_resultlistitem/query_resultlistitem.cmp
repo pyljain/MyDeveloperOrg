@@ -1,0 +1,21 @@
+<aura:component >
+	 <aura:attribute name="records" type="sobject[]"/> 
+     <aura:attribute name="fields" type="String[]"/> 
+     <aura:handler name="query_editRecord" event="c:query_editRecord" action="{!c.makeedit}"/>
+    
+     <ui:outputText value="Please find the results below" class="lead" />
+     <table class="table">
+         <thead>
+             <tr>
+                 <aura:iteration var="field" items="{!v.fields}">
+                    <th>{! field }</th>
+                 </aura:iteration>
+             </tr>
+         </thead>
+         <tbody>
+             <aura:iteration var="t" items="{!v.records}">
+                 <c:query_resultlistitemelement record="{!t}" fields="{! v.fields }" />
+             </aura:iteration>
+         </tbody>
+     </table>
+</aura:component>

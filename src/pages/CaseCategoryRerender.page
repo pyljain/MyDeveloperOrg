@@ -1,0 +1,44 @@
+<apex:page standardController="Case" extensions="CaseController">
+
+<apex:includeScript value="/soap/ajax/29.0/connection.js"/>
+<apex:includeScript value="/soap/ajax/29.0/apex.js"/>
+
+<apex:form title="Case Form" >
+    <apex:pageBlock title="Case Form">
+    <apex:pageBlockButtons >
+        <apex:commandButton action="{!upload}" value="Save"/>
+      </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Case Details" collapsible="true" columns="2">
+             <apex:outputField value="{!Case.description}"/>
+             <apex:outputField value="{!case.subject}"/>
+             <apex:outputField value="{!case.status}"/>
+             <apex:outputField value="{!case.priority}"/>                                                 
+             <apex:inputField value="{!case.origin}"> 
+                 <apex:actionSupport event="onchange" reRender="RefreshSection"/>    
+             </apex:inputField>
+             
+             
+                        
+        </apex:pageBlockSection>
+        
+        <apex:outputPanel id="RefreshSection">
+        <apex:pageBlockSection title="Addtional Information" columns="2" collapsible="true" rendered="{!case.origin =='Phone'}">                 
+                     <apex:inputField value="{!case.ownerId}"/> 
+                     <apex:inputField value="{!case.contactId}"/>  
+                     <apex:inputfield value="{!case.Contact.phone}"/> 
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Addtional Information" columns="2" collapsible="true" rendered="{!case.origin =='Web'}">           
+              <iframe src="https://www.salesforce.com" height = "600px" width ="200%" rendered="{!case.origin =='Web'}"/>
+        </apex:pageBlockSection>
+          </apex:outputPanel> 
+          
+         <apex:pageBlockSection title="Upload Details" columns="2" collapsible="true">         
+             <apex:pageBlockSectionItem >
+              <apex:outputLabel value="File" for="file"/>
+              <apex:inputFile value="{!attachment.body}" filename="{!filelabel}" id="file"/>
+            </apex:pageBlockSectionItem>        
+        </apex:pageBlockSection> 
+          
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

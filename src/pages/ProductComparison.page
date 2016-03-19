@@ -1,0 +1,40 @@
+<apex:page standardController="product2" extensions="productcomparison" >
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="8" title="Product Comparison" >
+            <apex:form >
+              <b>  <apex:outputLabel value=" Product 1 "> </apex:outputLabel> </b>
+                   <apex:selectList value="{!prod1}" multiselect="false" size="1"> 
+                  <apex:selectOptions value="{!itemslist}"/>
+                  </apex:selectList><p/>
+                
+                <b>  <apex:outputLabel value=" Product 2 "> </apex:outputLabel> </b>
+                 <apex:selectList value="{!prod2}" multiselect="false" size="1"> 
+                  <apex:selectOptions value="{!itemslist}"/>
+                  </apex:selectList><p/>
+                  
+                  <apex:commandButton value="Compare" action="{!compare}"/>
+            
+            
+            
+            </apex:form>         
+        </apex:pageBlockSection> 
+        <apex:pageBlockSection columns="2" title="Product Details">
+        <apex:dataTable align="center" cellpadding="10" columns="3" value="{!prods}" var="product2" border="2">
+         <apex:column value="{!product2.name}"/>
+        <apex:column value="{!product2.productcode}"/>
+        <apex:column value="{!product2.description}"/>                  
+        </apex:dataTable>  
+        
+        <apex:pageblockTable value="{!prods}" var="product2">
+         <apex:column value="{!product2.name}"/>
+        <apex:column value="{!product2.productcode}"/>
+        <apex:column value="{!product2.description}"/>  
+            
+        
+        
+        
+        </apex:pageblockTable>
+         
+       </apex:pageBlockSection>         
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,5 @@
+<apex:page controller="MyController" renderAs="html"> 
+
+    <input type="text" value="{! $User.FirstName }" id="hiddenbox" />
+    <apex:includeScript value="{!$Resource.HelloWorld}"/>
+</apex:page>

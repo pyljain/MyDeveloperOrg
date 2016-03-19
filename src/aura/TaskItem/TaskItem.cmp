@@ -1,0 +1,16 @@
+<aura:component controller="newTaskController">
+    <aura:attribute name="task" type="Task" />
+    <aura:attribute name="editMode" type="boolean" default="false" />
+    
+	<div>
+        <aura:if isTrue="{! v.editMode == false }">
+        	<span>{! v.task.Subject }</span>
+        	<ui:button press="{! c.editTask }" label="Edit" aura:id="editButton"></ui:button>
+    	</aura:if>
+        <aura:if isTrue="{! v.editMode == true }">
+            <ui:inputText value="{! v.task.Subject }" aura:id="editText" />
+        	<ui:button press="{! c.saveTask }" label="Save" aura:id="saveButton"></ui:button>
+    	</aura:if>
+        <ui:button press="{! c.delTask }" label="Delete"></ui:button>
+    </div>
+</aura:component>

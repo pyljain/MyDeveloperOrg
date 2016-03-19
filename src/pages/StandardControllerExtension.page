@@ -1,0 +1,20 @@
+<apex:page standardController="Account" extensions="StandardControllerExtension" >
+
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+        <b><apex:outputLabel value="Account Rating:" style="display:block" /> </b>
+        <apex:inputfield value="{!Account.Rating}"/>
+    </apex:pageBlock>
+</apex:form>
+<apex:pageBlock title="{!account.name}'s Opportunities">
+    <apex:pageblocktable value="{!childOpps}" var="co">
+        <apex:column value="{!co.Name}"/>
+        <apex:column value="{!co.Amount}"/>
+        <apex:column value="{!co.StageName}"/>
+        <apex:column value="{!co.CloseDate}"/>
+    </apex:pageblocktable>
+</apex:pageBlock>
+</apex:page>

@@ -1,0 +1,41 @@
+/** headline.css **/
+/** THis is to style all the top level elements immediate elements **/
+.THIS {
+    background-color: yellow;
+    padding-top: 10px;
+    font-size:24px;
+}
+/** Top Level h1**/
+h1.THIS {
+    font-size:24px;
+}
+
+/** Space refers to child elements, hence this is for all the h1s that are the children of top level tags **/
+.THIS h1{
+    font-weight: bold;
+    padding: 10px;
+    font-size:24px;
+}
+
+.THIS.container {
+    padding-top: 20px;
+}
+
+.THIS.headline {
+    font-size:24px;
+}
+
+.THIS .red {
+    background-color: red;
+    padding: 10px;
+}
+
+.THIS .blue {
+    background-color: blue;
+    padding: 10px;
+}
+
+.THIS .green {
+    background-color: green;
+    padding: 10px;
+}

@@ -1,0 +1,10 @@
+<apex:page standardController="Account" extensions="VFChartStockPrices" >
+{!pieData}
+ <apex:pageblock title="Stock Trends" >
+        <apex:chart height="250" width="350" data="{!pieData}"> 
+            <apex:axis type="Numeric" position="left" fields="data" title="Stock Prices"/>    
+            <apex:axis type="Category" position="bottom" fields="month" title="Month"/>            
+            <apex:barSeries orientation="vertical" axis="left" xField="month" yField="data"/> 
+        </apex:chart>
+    </apex:pageblock>   
+</apex:page>

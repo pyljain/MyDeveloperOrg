@@ -1,0 +1,15 @@
+<apex:page controller="ContactSearch">
+  <apex:pageBlock >
+      <apex:pageblockSection columns="2" title="Search Accounts">
+          <apex:pageblocksectionItem >
+          <apex:form >
+              <apex:inputtext value="{! UserString}" />
+              <apex:repeat value="{! accounts }" var="acc">
+              <p>{! acc.Name }</p>
+              </apex:repeat>
+              <apex:commandButton id="submit1" action="{! submit }" value="Submit"/>           
+          </apex:form>          
+          </apex:pageblocksectionItem>       
+      </apex:pageblockSection>
+  </apex:pageBlock>
+ </apex:page>

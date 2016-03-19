@@ -1,0 +1,34 @@
+<apex:page standardController="Order__c" extensions="orderpicklisttest" >
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:pageBlock >
+      <apex:pageBlockSection columns="6" title="Order Header">
+          <apex:pageBlockSectionItem >
+              <apex:form >
+                <b> <apex:outputLabel value="Name"></apex:outputLabel> </B>
+                  <apex:inputtext value="{!Order__c.name }" /> <br></br>
+             <!--     <b> <apex:outputLabel value="Status"></apex:outputLabel> </B> -->
+             <!--     <apex:inputtext value="{!Order__c.status__c }" /> -->                                   
+             <!--      <apex:inputField value="{! Order__c.status__c }"/> <br></br> -->
+                                                       
+             <!--     <b> <apex:outputLabel value="Dependent Status"></apex:outputLabel> </B> -->
+            <!--      <apex:inputField value="{! Order__c.stausdependent__c }"/> <br></br> -->
+                  <b> <apex:outputLabel value="Status without picklist"></apex:outputLabel> </B> 
+                <apex:inputfield value="{! Order__c.StatusFromObject__c }"/> <br></br>                           
+                 
+                  <b> <apex:outputLabel value="Field from LOV" for="AName"/></b> 
+                  <apex:selectList value="{!Order__c.StatusFromObject__c}" multiselect="false" id="AName" size="1">
+                  <apex:selectOptions value="{!itemslist}"/>
+                  </apex:selectList><p/>
+                 
+                 <apex:actionSupport event="onchange" rerender="features"/>
+                  <b> <apex:outputLabel value="Product Name"></apex:outputLabel> </B>
+                  <apex:inputtext value="{!Order__c.ProductName__c }" />
+                  <apex:commandButton value="Save" action="{! save }"/>          
+                 <apex:detail />
+              </apex:form>
+          </apex:pageBlockSectionItem>
+      </apex:pageBlockSection>     
+  </apex:pageBlock>
+  
+
+</apex:page>

@@ -1,0 +1,10 @@
+<aura:component >
+    
+    <ltng:require styles="/resource/bootstrap" scripts='/resource/jquery,/resource/bootstrapjs' afterScriptsLoaded="{!c.jsLoaded}" />    
+    <aura:attribute name="googleString" type="String" default=""/>
+    <aura:registerEvent name="query_createQueryEvent" type="c:query_createQueryEvent"/>
+    <ui:inputText label="Enter Query" aura:id="QueryId" class="form-control" placeholder="Enter your query" value="SELECT LastName, FirstName, Phone FROM Contact"/> 
+    <ui:button label="Run" press="{!c.createQueryClientController}"/> 
+    
+	
+</aura:component>

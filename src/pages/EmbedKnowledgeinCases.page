@@ -1,0 +1,18 @@
+<apex:page standardController="Case" extensions="KnowledgeController" >
+  <apex:pageBlock id="mainBlock">
+    <apex:pageBlockSection columns="2">
+
+        <apex:pageBlockTable value="{!case}" var="a" title="Case Details" width="800px" border="10px">
+            <apex:column value="{!a.description}"/>
+            <apex:column value="{!a.subject}"/>
+            <apex:column value="{!a.status}"/>
+            <apex:column value="{!a.priority}"/>
+        </apex:pageBlockTable>
+
+        <apex:pageBlockTable value="{!know }" var="a">
+            <apex:column value="{!a.summary}"/>
+        </apex:pageBlockTable>
+
+    </apex:pageBlockSection>
+</apex:pageBlock>
+</apex:page>

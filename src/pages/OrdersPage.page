@@ -1,0 +1,57 @@
+<apex:page showHeader="true" sidebar="true" standardController="Order" extensions="OrderExtnController">
+    
+    <style>
+
+        .main-section {
+            width: 80%;
+            display: inline-block;
+        }
+        
+        .related-products {
+            background-color: #95a5a6;
+            width: 19%;
+            height: 100%;
+            display: inline-block;
+            float: right;
+        }
+
+    </style>
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    
+    <div>
+        <div class="main-section">
+            <apex:pageBlock title="Create Order">
+                <apex:form >
+                    <apex:inputField value="{! Order.AccountId }" />
+                    <apex:inputField value="{! Order.Product__c }" styleClass="product-field" />
+                    <apex:commandButton action="{!save}" value="Save" />
+                </apex:form>
+            </apex:pageBlock>
+        </div>
+        
+        <div class="related-products">
+            <ul class="listOfProducts">
+            </ul>
+        </div>
+
+        <script>
+
+            $('.product-field').on('change', function() {
+                var productName = $('.product-field').val();
+                OrderExtnController.getRelatedProducts(productName, function(results) {
+
+                    for (var i = 0; i < results.length; i++) {
+                        
+                        var listTag = $('<li>');
+                        listTag.text(results[i]);
+
+                        $('.listOfProducts').append(listTag);   
+                    }
+                    
+                });
+            });
+
+        </script>
+    </div>
+</apex:page>

@@ -1,0 +1,8 @@
+.THIS .text-center {
+    text-align: center;
+}
+
+.THIS > .background-image {
+    background-image: url(http://www.netanimations.net/water-rainy-day_window_animated_free_gif.gif);
+    background-size: cover;
+}

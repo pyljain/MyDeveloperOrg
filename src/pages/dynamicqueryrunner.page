@@ -1,0 +1,17 @@
+<apex:page controller="DynamicQueryGenerator" >
+<apex:form >
+  <apex:pageBlock title="Enter Query" id="header">
+      <apex:inputtextarea value="{!query}" cols="120"/> <br></br>
+      <apex:commandButton action="{!run}" value="Execute Query"/>    
+      
+  </apex:pageBlock>
+  <apex:pageBlock title="Results">
+      <apex:pageblocktable value="{!results}" var="row">
+          <apex:repeat value="{! fields }" var="field">
+              <apex:column value="{!row[field]}"/>
+          </apex:repeat>
+             
+      </apex:pageblocktable>        
+  </apex:pageBlock>
+</apex:form>
+</apex:page>

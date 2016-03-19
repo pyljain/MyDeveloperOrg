@@ -1,0 +1,33 @@
+<apex:page controller="MultiAttachmentController">
+ <apex:form id="attForm">
+        <apex:pageBlock title="Case Details" tabStyle="Case">
+            <apex:outputLabel value="Name"/>  
+            <apex:inputText value="{!name}"/>
+            <apex:outputLabel value="Status"/>  
+            <apex:inputtext value="{!status}"/>  
+            <apex:outputLabel value="Subject"/>  
+            <apex:inputtext value="{!subject}"/> 
+            <apex:commandButton value="Create Case" action="{!savecase}"/>    
+        
+        </apex:pageBlock>
+        <apex:pageBlock title="Upload Attachments">
+            <apex:repeat value="{!newAttachments}" var="newAtt">
+                <apex:pageBlockSection columns="3">
+                   <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="File"/>                         
+                        <apex:inputFile value="{!newAtt.body}" filename="{!newAtt.name}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Description"/>                      
+                        <apex:inputText value="{!newAtt.Description}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:repeat>
+            <apex:commandButton value="Add More" action="{!addMore}"/>
+            <apex:commandButton value="Create Case with Attachments" action="{!save}"/>
+            <apex:commandButton value="Done" action="{!done}"/>
+        </apex:pageBlock>
+    </apex:form>
+   
+
+</apex:page>

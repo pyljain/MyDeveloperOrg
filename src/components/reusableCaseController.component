@@ -1,0 +1,11 @@
+<apex:component controller="PlugInCaseController">
+    <apex:attribute name="parentRecordId" description="This is a case controller to show cases by categories" type="String" required="true" assignTo="{!IdParam}"/>
+    <apex:attribute name="field" description="Field on the case object to query on" type="String" required="true" assignTo="{! fieldName }"/>
+    
+    <apex:pageblock title="Cases by Status" >
+        <apex:chart height="250" width="350" data="{!pieData}"> 
+            <apex:pieSeries tips="true" dataField="data" labelField="name"/> 
+            <apex:legend position="bottom"/>
+        </apex:chart>
+    </apex:pageblock>
+</apex:component>

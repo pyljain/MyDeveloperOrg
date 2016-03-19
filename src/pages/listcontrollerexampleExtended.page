@@ -1,0 +1,28 @@
+<apex:page standardController="Contact" recordSetVar="contacts" >
+<apex:form >
+    <apex:pageblock title="Contact List" >
+        <apex:pageblocktable value="{!contacts}" var="c">
+            <apex:column value="{!c.id}"/>
+            <apex:column value="{!c.lastname}"/>
+            <apex:column value="{!c.firstname}"/>
+            <apex:column value="{!c.email}"/>
+        </apex:pageblocktable>
+            <apex:panelGrid columns="3" cellspacing="16">
+            <apex:commandLink action="{!Previous}" value="Previous Page" rendered="{!HasPrevious}"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:commandLink action="{!Next}" value="NextPage" rendered="{!HasNext}"/> 
+            <apex:outputPanel >
+                <apex:outputText value=":  Records Per Page" >
+                    <apex:selectList value="{!PageSize}" size="1"> 
+                        <apex:selectOption itemValue="{!10}" itemLabel="10"/>
+                        <apex:selectOption itemValue="{!20}" itemLabel="20"/>
+                    </apex:selectList>                 
+                </apex:outputText>  
+              <!--  <apex:commandButton action="{!NULL}" value="Update"/>  --> 
+             &nbsp;&nbsp;&nbsp;&nbsp;
+            <b>  <apex:outputText value="Page {!PageNumber} of {!CEILING(ResultSize /PageSize)}"/>    </b>             
+            </apex:outputPanel>
+        </apex:panelGrid>       
+    </apex:pageblock>
+</apex:form> 
+</apex:page>

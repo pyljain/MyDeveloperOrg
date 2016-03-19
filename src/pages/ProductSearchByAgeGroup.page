@@ -1,0 +1,29 @@
+<apex:page standardController="Order__c" extensions="SearchProductbyAgeGroup">
+<apex:pageBlock id="thePageBlock">
+      <apex:pageBlockSection columns="6" title="Search Product">
+          <apex:pageBlockSectionItem >
+              <apex:form >
+                <b> <apex:outputLabel value="Age Group"></apex:outputLabel> </B>
+                  <apex:inputField value="{!Order__c.age_group__c }" />  
+                  <apex:inputtext value="{!agegroup}"/>
+                   
+                    
+               <apex:commandButton value="Search" action="{! search }"  /><br></br> 
+               <apex:commandButton value="Test" action="{! Test }"  /><br></br> 
+             <!--      <apex:commandButton value="Save" action="{! save}" /><br></br>  -->
+                  <b> <apex:outputLabel value="Product Name"></apex:outputLabel> </B>
+                  
+                  
+                  <apex:selectList value="{!Order__c.ProductName__c}" multiselect="false" size="1">
+                  <apex:selectOptions value="{!itemslist}"/>
+                  </apex:selectList><p/>
+                            
+              </apex:form>
+          </apex:pageBlockSectionItem>
+      </apex:pageBlockSection>     
+  </apex:pageBlock>
+  
+ 
+ 
+ 
+</apex:page>

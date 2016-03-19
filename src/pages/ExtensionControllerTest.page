@@ -1,0 +1,13 @@
+<apex:page standardController="account" extensions="myacctextension" >
+<apex:pageBlock >
+      <apex:pageblockSection columns="1" title="Search Accounts">
+          <apex:pageblocksectionItem >
+          <apex:form >
+              <apex:inputHidden value="{! account.name }"/>
+              <apex:commandButton id="submit1" action="{! submit }" value="Submit"/>           
+              <apex:detail />
+          </apex:form>          
+          </apex:pageblocksectionItem>       
+      </apex:pageblockSection>
+  </apex:pageBlock>
+ </apex:page>

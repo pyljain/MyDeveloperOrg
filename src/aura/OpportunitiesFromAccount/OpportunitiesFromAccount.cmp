@@ -1,0 +1,11 @@
+<aura:component controller="AccountListController" implements="force:appHostable">
+    <ltng:require scripts="/resource/Chart"/>
+     <aura:handler event="c:AccountSelectedEvent" action="{!c.getOpportunities}"/>
+    <aura:attribute name="opportunities" type="Opportunity[]"/>	
+    <div class="heading">
+        Doughnut showing an opportunity split for the account
+    </div>
+    <div>
+	<canvas aura:id="chart" id="myChart" width="300" height="400"/>
+   </div>
+</aura:component>

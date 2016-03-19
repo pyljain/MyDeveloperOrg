@@ -1,0 +1,53 @@
+<apex:page controller="AutoComplete" >
+ <!-- JQuery Files -->
+
+  <apex:includeScript value="{!URLFOR($Resource.jqueryui18, 'js/jquery-1.7.1.min.js')}" />
+  <apex:includeScript value="{!URLFOR($Resource.jqueryui18, 'js/jquery-ui-1.8.18.custom.min.js')}" />https://c.ap1.visual.force.com/s.gif
+  <apex:stylesheet value="{!URLFOR($Resource.jqueryui18,'css/smoothness/jquery-ui-1.8.18.custom.css')}"/>
+
+<style>
+
+    .search {
+        border-radius: 30px;
+        height: 30px;
+        padding-left: 10px;
+    }
+
+</style>
+  
+<script>
+    
+    $(function() {
+        $('.search').autocomplete({
+            source: function(request, response) {
+                // Call a Remote Action (request.term)
+                AutoComplete.getAccounts(request.term, function(result, event) {
+                    response(result); 
+                });
+                
+            }
+        });
+    });
+
+</script>
+<apex:form >
+    <apex:pageblock >
+        <apex:pageBlockSection title="Search" columns="3" dir="">
+            <apex:outputPanel >
+                <apex:inputText value="{!nameQuery}" styleClass="search" html-placeholder="Search" />&nbsp;&nbsp;&nbsp;
+                <apex:actionSupport event="onkeyup" reRender="RefreshSection" action="{! refreshListOfAccounts }" />  
+                <apex:commandButton action="{!executeSearch}" value="Search"/>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+        <apex:outputPanel id="RefreshSection">        
+         <apex:pageBlockTable value="{!similarAccounts}" var="acc">
+              <apex:column headerValue="Name">
+                 <a href="/{!acc.id}">{!acc.name}</a>
+              </apex:column>
+              <apex:column value="{!acc.name}"/>
+        </apex:pageBlockTable>
+        </apex:outputPanel>
+       
+   </apex:pageblock>
+</apex:form>  
+</apex:page>

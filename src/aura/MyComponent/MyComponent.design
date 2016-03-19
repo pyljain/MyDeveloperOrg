@@ -1,0 +1,3 @@
+<design:component>
+    <design:attribute name="mytext" label="Text to show on page" description="This is my test" />
+</design:component>

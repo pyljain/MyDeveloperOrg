@@ -1,0 +1,38 @@
+<apex:page controller="TopAccountsController" standardStylesheets="false">
+  <apex:stylesheet value="{! $Resource.TopAccountsCSS }"/>
+  
+  <div id="header">
+      <h1>Top Accounts</h1>
+  </div>
+  <div id="content">
+      <apex:variable value="0" var="num"/>
+      <apex:repeat var="record" value="{! records }">  
+          <apex:variable var="num" value="{!VALUE(num) + 1}"/>
+                  
+          <div class="account-table color-{! num }">
+              <p><span class="label">Account Name :&nbsp;</span><apex:outputText value="{! record.name }" /></p>
+              <p><span class="label">Annual Revenue:&nbsp;</span><apex:outputText value="{! record.AnnualRevenue}" /></p>
+              <p><span class="label">Opportunities</span>
+                  <table class="opportunity-table">
+                      <thead>
+                          <th>Name</th>
+                          <th>Stage</th>
+                      </thead>
+                      <tbody>
+                          <apex:repeat value="{! record.Opportunities }" var="opportunity">
+                              <tr>
+                                  <td>{! opportunity.name }</td>
+                                  <td>{! opportunity.StageName }</td>
+                              </tr>
+                          </apex:repeat>
+                      </tbody>
+                  </table>
+              </p>
+          </div>
+      </apex:repeat>
+      <apex:form >
+          <apex:commandButton value="Previous" action="{! previousPage }" disabled="{! pageNumber == 0 }" styleClass="btn-nav" />
+          <apex:commandButton value="Next" action="{! nextPage }" styleClass="btn-nav" />
+      </apex:form>
+  </div>
+</apex:page>

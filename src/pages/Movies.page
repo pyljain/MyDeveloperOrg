@@ -1,0 +1,139 @@
+<apex:page applyHtmlTag="false" showHeader="false" standardStylesheets="false">
+<html>
+    <head>
+        <title> Movie Library </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <style>
+            html,body {
+                height: 100%;
+            }
+
+            .height-100-p {
+                height: 100%;
+            }
+
+            .height-100 {
+                height: 200px;
+            }
+
+            .red {
+                background-color: red;
+            }
+
+            .green {
+                background-color: #839483;
+            }
+
+            .yellow {
+                background-color: yellow;
+            }
+
+            .navigation {
+                height: 70px;
+                background-color: gray;
+                
+
+            }
+
+        </style>
+    </head>
+    <body>
+        <div ng-app = "MoviesLibrary"> <!--class="jumbotron" -->
+            <h1>Welcome to you movie corner!</h1>
+            <p>Search for your favourite movies and build your library</p>
+            <div ng-controller = "getMovieDetails" class="col-md-6 green height-100-p">
+                <input type = "text" size="50px" ng-model = "name"/> <button ng-click = "fetchMovieDetails()" class="btn btn-primary btn-lg"> Fetch </button> <button ng-click = "getMoviesFromList()" class="btn btn-primary btn-lg"> Get My List </button>
+            
+                
+                <table class="table table-striped table-hover"> <!--class="table table-striped table-hover"-->
+                  <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                  </tr>
+                  <tr ng-repeat="movie in fetchedmovies">
+                    <td ng-click = "getPlotDetails(movie)"> {{ movie.Title}} </td>
+                    <td> {{ movie.imdbID}}</td> 
+                    <td> <button ng-click = "addToPersonalList(movie)"> Add</button> </td>
+                    <td> {{ movie.plot }} </td>
+                  </tr>
+                 </table>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+        <script>
+            var app = angular.module('MoviesLibrary' , []);
+            //var headers = { 'X-Mashape-Key': 'zlCBVyDxSXmshbp5YExzL2uUQi2rp1x1PKBjsnXyOSrCSJEps7'};
+            app.controller('getMovieDetails' , function($scope , $http) {
+
+                $scope.fetchMovieDetails = function() {
+
+                    $http.get('https://www.omdbapi.com/?s='+$scope.name).then(function(response) {
+                        
+                        console.log(response);
+                        $scope.fetchedmovies = response.data.Search; 
+                    //  console.log(movieName.imdbID);
+                    });
+                };
+
+                $scope.getPlotDetails = function(movie) {
+                //  var imbdID_Num = parseInt($scope.fetchedmovies.imdbID);
+                //  console.log(imbdID_Num);
+                    $http.get('http://www.omdbapi.com/?i=' + movie.imdbID + '&plot=full&r=json').then(function(response) {
+                        //$http.get('http://www.omdbapi.com/?i=' +imbdID_Num+'&plot=full&r=json').then(function(response) {
+                        console.log('Plot Clicked');
+                        console.log(response);
+                        movie.plot = response.data.Plot;
+                    });
+
+                };
+
+                $scope.addToPersonalList = function(movie) {
+                
+                    
+                    var movietoAdd = {
+                            name : movie,
+                            rating : 9,
+                            imdbId : movie.imdbID
+                    };
+
+                    var request = $http ({
+
+                        method: "post",
+                        url: "https://boiling-ridge-4531.herokuapp.com/movies",
+                        data: {
+
+                            name : movie.Title,
+                            rating : 9,
+                            imdbId : movie.imdbID
+
+                        }
+                     });    
+
+                    request.success (
+                    function( response ) {
+                        $scope.cfdump = response;
+                        console.log(response);
+                        }
+                    );              
+
+                };
+
+                $scope.getMoviesFromList = function() {
+                
+                    $http.get('https://boiling-ridge-4531.herokuapp.com/movies').then(function(response) {
+                        //$http.get('http://www.omdbapi.com/?i=' +imbdID_Num+'&plot=full&r=json').then(function(response) {
+                        console.log('All Movies');
+                        console.log(response);
+                        
+                    });
+
+                };
+
+
+            }); 
+
+        </script>
+    </body>
+</html>
+</apex:page>

@@ -1,0 +1,10 @@
+<apex:page standardController="Part_Tracker__c" extensions="myparttracker" >
+  <!-- Begin Default Content REMOVE THIS -->
+      <apex:form >
+      <p></p>
+          
+          <apex:commandButton id="commit" action="{! commitAction }" value="Commit"/>    
+          <apex:detail />      
+          
+      </apex:form>
+</apex:page>

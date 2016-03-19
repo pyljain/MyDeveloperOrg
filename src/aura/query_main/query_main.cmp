@@ -1,0 +1,14 @@
+<aura:component controller="fetchQueryResult">
+    
+    <aura:attribute name="myText" type="String" default="None"/>
+    <aura:handler name="query_createQueryEvent" event="c:query_createQueryEvent" action="{!c.computeQuery}"/>
+    <aura:handler name="query_editRecord" event="c:query_editRecord" action="{!c.makeedit}"/>
+    
+    <div>
+    	<c:query_createQuery />
+    </div> 
+    <div>
+    	<c:query_resultlistitem records="{!v.records}" fields="{! v.fields }" />	    
+    </div>
+   
+</aura:component>

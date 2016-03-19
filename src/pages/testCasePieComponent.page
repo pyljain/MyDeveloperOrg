@@ -1,0 +1,3 @@
+<apex:page standardController="Contact">
+  <c:reusableCaseController parentRecordId="{! contact.Id }" field="ContactId" />
+</apex:page>

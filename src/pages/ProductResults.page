@@ -1,0 +1,24 @@
+<apex:page controller="results" >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>The results are displayed in the table below</h1>
+      <apex:pageBlock title="Hello {!$User.FirstName}!">   
+      </apex:pageBlock>
+      <apex:pageBlock title="Products">
+      <apex:dataTable value="{!returnproducts}" var="p" cellPadding="15" border="1">
+      <apex:column >
+      {!p.name}
+      </apex:column>
+      <apex:column >
+     {!p.productcode}
+      </apex:column>
+      <apex:column >
+      <apex:repeat value="{! p.attachments }" var="img">
+          <apex:image value="{!URLFOR($Action.Attachment.Download, img.id)}" height="200"/>
+      </apex:repeat>
+    
+      </apex:column>
+    </apex:dataTable>
+  </apex:pageBlock>
+
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

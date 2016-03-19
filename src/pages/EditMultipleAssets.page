@@ -1,0 +1,27 @@
+<apex:page standardController="case" recordSetVar="cases" tabStyle="case" sidebar="false" >
+  <!-- This is a page developed in order to be able to edit multiple cases at one go -->
+  <apex:form >
+      <apex:pageBlock >
+          <apex:pagemessages />
+              <apex:pageBlockButtons >
+                  <apex:commandButton value="Save" action="{!save}"/>   
+              </apex:pageBlockButtons>
+              <apex:pageblocktable value="{!cases}" var="cs" >
+                  <apex:column value="{! cs.CaseNumber }"/>
+                  <apex:column headerValue="Status">
+                  <apex:inputfield value="{!cs.status} "/>
+                  </apex:column>
+                  <apex:column headerValue="Origin">
+                  <apex:inputField value="{!cs.Origin}"/>
+                  </apex:column>
+                  <apex:column headerValue="Description">
+                  <apex:inputField value="{!cs.Description}"/>
+                  </apex:column>
+              
+              
+              
+              </apex:pageblocktable>
+      </apex:pageBlock>
+  </apex:form>
+  
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page controller="GenericFieldsController">
+    {! query }
+    {! results }
+  <apex:repeat value="{! fieldNames }" var="name">
+      {! name } {! results[0][name] }<br/>
+  </apex:repeat>
+</apex:page>

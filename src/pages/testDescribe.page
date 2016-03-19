@@ -1,0 +1,5 @@
+<apex:page STandardController="account">
+
+<c:objectAttributes objectName="Account"/>
+
+</apex:page>

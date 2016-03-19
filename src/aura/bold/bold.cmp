@@ -1,0 +1,7 @@
+<aura:component >
+    
+    <aura:attribute name="text" description="This is the text to make bold" type="String" />
+    
+    <!-- Remember that variables should be v. -->
+	<span>{! v.text }</span>
+</aura:component>

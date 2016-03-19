@@ -1,0 +1,14 @@
+<apex:page controller="Awesome">
+  <apex:form >
+      <apex:inputText value="{! counter }"/>
+      <apex:repeat value="{! accounts }" var="acc">
+          <p>{! acc.Name }</p>
+      </apex:repeat>
+      <apex:commandButton id="submit1" action="{! submit }" value="Submit"/>
+      <style>
+          #submit1 {
+              background-color:red !important;
+          }
+      </style>
+  </apex:form>
+</apex:page>

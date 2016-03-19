@@ -1,0 +1,30 @@
+<apex:page standardController="Order__c" extensions="ProductsPickerController" standardStylesheets="false" >
+<apex:stylesheet value="{!$Resource.TopAccountsCSS1 }"/>
+<div id="header">
+<apex:form >
+<B><apex:outputlabel value="Pick Product:   "></apex:outputlabel></b>
+<apex:inputtext value="{!searchproduct }" style="width:400px"/>
+<apex:commandButton value="Search" action="{!searchinmodel}" />
+</apex:form>
+</div>
+
+<div id =" ProductsReturned">
+<apex:repeat value="{!records}" var="record">  
+    <div class = "product-list">
+    
+    <p><span class="label">Product Name :&nbsp;</span><apex:outputText value="{! record.name }" /></p>
+    <p><span class="label">Product Code: &nbsp;</span><apex:outputtext value="{!record.id}"></apex:outputtext></p> 
+    </div>
+    </apex:repeat>
+    <apex:form >
+    <p><span class="label">&nbsp; </span> 
+    <apex:selectRadio value="{!selectproduct}">
+    <apex:selectOptions value="{!items}"/>
+    </apex:selectRadio></p>
+   
+     <!--   <apex:commandButton value="Pick" action="{!pickproduct}" disabled="{!selectproduct == null}"/> -->
+    <apex:commandButton value="Pick" action="{!pickproduct}"/>
+    </apex:form>
+    
+</div>  
+</apex:page>

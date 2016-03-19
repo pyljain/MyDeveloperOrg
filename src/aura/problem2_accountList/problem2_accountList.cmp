@@ -1,0 +1,31 @@
+<aura:component controller="getAccountList" >
+    
+     <ltng:require styles="/resource/bootstrap" scripts='/resource/jquery,/resource/bootstrapjs' afterScriptsLoaded="{!c.jsLoaded}" />    
+     <aura:attribute name="accounts" type="Account[]"/>  
+     <aura:attribute name="type" type="String"/>
+    
+     <aura:handler name="init" value="{!this}" action="{!c.getAccountsClientController}"/>    
+     <aura:registerEvent name="AddressPinCode" type="c:AddressPinCodeEvent_1"/>
+
+    
+    <table class="table table-bordered table-hover "> 
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <aura:iteration var="a" items="{!v.accounts}" indexVar="i">
+        <tr>
+            <td> {!a.Name} </td>
+            <td> {!a.BillingPostalCode}</td> 
+            <td data-index="{! i }"> 
+                <ui:button label="Select" press="{!c.handleSelection}" /> 
+            </td>            
+        </tr>
+        </aura:iteration>
+        </tbody>
+    </table>
+	
+</aura:component>

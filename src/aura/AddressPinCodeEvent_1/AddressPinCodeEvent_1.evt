@@ -1,0 +1,5 @@
+<!-- AddressPinCodeEvent_1.evt -->
+<aura:event type="APPLICATION" description="Starting PinCode">
+    <aura:attribute name="FromCode" type="String"/>
+    <aura:attribute name="EndCode" type="String"/>
+</aura:event>

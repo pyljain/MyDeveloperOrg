@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="An event triggered when input is changed">
+    <aura:attribute name="message" type="string" />
+</aura:event>

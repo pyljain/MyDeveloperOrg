@@ -1,0 +1,45 @@
+<apex:page standardController="account" showHeader="true" tabStyle="account" extensions="ShowContactChildren" >
+<apex:form >
+    
+    <!--    <div> -->
+              <apex:commandButton action="{!getChildren }" value="Get Cases"/>            
+   <!--    </div> -->
+      <apex:pageBlock title="{!account.name}'s Contacts ">
+          <apex:pagemessages />
+          <!--    <apex:pageblockbuttons >
+                  <apex:commandButton action="getChildren" value="Get Cases"/>
+              </apex:pageblockbuttons> -->
+              
+                    <apex:pageBlockTable value="{!contactList}" var="con">
+                         <apex:column headerValue="Select" >
+
+                              <apex:inputCheckbox value="{!con.checked}">
+                              </apex:inputCheckbox>
+                                                         
+                         </apex:column> 
+                         <apex:column value="{! con.c.name }"/>
+                         <apex:column value="{! con.c.firstname}"/>
+                         <apex:column value="{! con.c.salutation}"/>
+                         <apex:column value="{! con.c.description}"/>  
+                         <apex:column value="{! con.c.email}"/>                                         
+                    </apex:pageBlockTable>   
+    </apex:pageBlock>
+  <apex:outputPanel id="casesPanel">
+       <apex:pageBlock title="Related Cases">
+          <apex:pagemessages />
+               <apex:pageBlockTable value="{!CaseForContact}" var="conCase">
+                         <apex:column headerValue="Select" >
+                              <apex:inputCheckbox value="{!checked}" />                           
+                         </apex:column> 
+                         <apex:column value="{! conCase.ContactId}"/>  
+                         <apex:column value="{! conCase.CaseNumber }"/>
+                         <apex:column value="{! conCase.CreatedDate}"/>
+                         <apex:column value="{! conCase.Origin}"/>
+                         <apex:column value="{! conCase.description}"/>  
+                                                                
+                    </apex:pageBlockTable>   
+    </apex:pageBlock>   
+  
+  </apex:outputPanel>
+  </apex:form>
+</apex:page>

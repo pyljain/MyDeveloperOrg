@@ -1,0 +1,13 @@
+<aura:component controller="newTaskController">
+    
+            
+   	 <aura:attribute name="tasks" type="Task[]"/>  
+     <aura:handler name="init" value="{!this}" action="{!c.getTasksClientController}"/>
+     <aura:handler event="c:TaskCreatedEvent" action="{!c.getTasksClientController}"/>
+     <ui:outputText value="My Tasks" />
+     <ui:button label="Get Task" press="{!c.getTasksClientController}"/> 
+     <ui:button label="Get Task1" press="{!c.getTasksClientController}"/> 
+     <aura:iteration var="t" items="{!v.tasks}">
+         <c:TaskItem task="{! t }" />
+     </aura:iteration>  
+</aura:component>

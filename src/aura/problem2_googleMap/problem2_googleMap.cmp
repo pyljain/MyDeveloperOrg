@@ -1,0 +1,10 @@
+<aura:component >
+    <ltng:require styles="/resource/bootstrap" scripts='/resource/jquery,/resource/bootstrapjs' afterScriptsLoaded="{!c.jsLoaded}" />    
+    <aura:attribute name="googleString" type="String" default=""/>
+   
+    <aura:attribute name="fromaddress" type="String"/>
+    <aura:attribute name="toaddress" type="String"/>
+    <aura:handler event="c:AddressPinCodeEvent_1" action="{!c.getDistance}"/>
+   <!-- <aura:handler name="init" value="{!this}" action="{!c.getDistance}"/> -->
+    <iframe style="height:100%;width:100%;border-radius: 2px;" src="{!v.googleString}"/>
+</aura:component>

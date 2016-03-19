@@ -1,0 +1,52 @@
+<apex:page controller="DedupController" >
+<apex:form >
+<apex:pageBlock title="Pick Deduplication Object & Fields">
+    <apex:actionFunction name="rerenderFields" rerender="FieldsSelectList" >
+          <!--<apex:param name="firstParam" assignTo="{!objectSelected}" value="" />-->
+      </apex:actionFunction>
+      
+<table><tbody>
+      <tr>
+        <th>Object</th>
+          <td>
+             <apex:selectList id="obj" styleclass="std" size="1" 
+                value="{!objectSelected}" onChange="rerenderFields(this.value)">
+                    <apex:selectOptions value="{!DedupObjectsSelectList}"/>
+             </apex:selectList>
+          </td>
+      </tr>
+      </tbody></table>
+      <apex:outputPanel id="FieldsSelectList">
+      <table><tbody>
+      
+      <tr id="field_input">
+        <th>Object Fields</th>
+          
+          <td>
+            <apex:selectList styleclass="std" size="1" 
+                 value="{!objectField}">
+                   <apex:selectOptions value="{!FieldsSelectList}"/>
+            </apex:selectList>
+            <apex:selectList styleclass="std" size="1" 
+                 value="{!objectField}">
+                   <apex:selectOptions value="{!FieldsSelectList}"/>
+            </apex:selectList>
+            <apex:selectList styleclass="std" size="1" 
+                 value="{!objectField}">
+                   <apex:selectOptions value="{!FieldsSelectList}"/>
+            </apex:selectList>
+          </td>
+          
+       </tr>
+       
+   </tbody></table>
+   </apex:outputPanel>
+   <apex:commandButton value=" Save " action="{!saveSelection}" />
+</apex:pageBlock>
+<apex:pageBlock title="Selected Objects">
+
+
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

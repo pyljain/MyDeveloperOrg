@@ -1,0 +1,18 @@
+<apex:page controller="DashBoardController" tabStyle="Opportunity" >
+ 
+ <apex:pageBlock >
+     <apex:pageblocktable value="{!leaders}" var="l" rows="5">
+         <apex:column >
+             <apex:image url="{!l.leaderPic}"/>
+         </apex:column>
+         <apex:column value="{!l.leaderName}" headerValue="Leader Name"/>    
+         <apex:column value="{!l.oppCount}" headerValue="Won"/>  
+         <!--<apex:column headerValue="Revenue">  
+             <apex:outputText value="{0, number , 0.0000}">
+             <apex:param value="{!l.oppAmount}"/>
+             </apex:outputText>
+         </apex:column>-->
+         <apex:column value="{!l['oppAmount']}" headerValue="Revenue"/>
+     </apex:pageblocktable>
+ </apex:pageBlock>
+</apex:page>

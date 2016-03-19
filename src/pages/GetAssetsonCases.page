@@ -1,0 +1,22 @@
+<apex:page standardController="case" extensions="GetAssetsController" >
+
+<apex:pageblock >
+<apex:pageBlockButtons location="top"> 
+    <apex:form >    
+        <apex:commandButton action="{!getassets }" rerender="refreshpage" value="Get Assets" />
+        <apex:commandButton action="{!createactivity}" value="Create Activity"/>
+         <apex:outputPanel id="refreshpage"> 
+            <apex:dataTable value="{! assetList }" var="a" cellPadding="4" border="1">
+              <apex:column >
+              <apex:inputCheckbox value="{! a.checked }" label="Select"/>
+              </apex:column>                   
+               <apex:column >
+               {! a.ass.Name }
+              </apex:column>
+            </apex:dataTable>
+        </apex:outputPanel> 
+    </apex:form>
+            
+    </apex:pageBlockButtons>
+</apex:pageblock>
+</apex:page>

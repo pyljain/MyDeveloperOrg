@@ -1,0 +1,9 @@
+<aura:component >
+   <aura:registerEvent name="MyInputTypedEvent" type="c:MyInputTypedEvent"/>
+    
+    <div>
+        <input type="text" onkeyup="{! c.changed }" />   
+		<button> Create Task</button>
+    
+    </div> 	
+</aura:component>

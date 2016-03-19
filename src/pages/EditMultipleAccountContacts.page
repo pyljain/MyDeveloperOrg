@@ -1,0 +1,39 @@
+<apex:page standardController="Account" extensions="Account_Contacts" >
+    <apex:form >
+        <div>
+       <apex:commandButton value="Mass Update" action="{! massUpdate }" />
+       </div>
+    </apex:form>
+    <apex:form rendered="{! updateMode == true }">
+       <apex:pageBlock title="{!account.name} Contacts" >
+            <apex:pagemessages />
+                <apex:pageBlockButtons >
+                       <apex:commandButton action="{!saveRecords}" value="Save Updates"/> 
+                </apex:pageBlockButtons>
+                     <apex:pageBlockTable value="{!account.contacts}" var="con">
+                         <apex:column headerValue="Name">
+                         <apex:inputField value="{!con.name}"/>
+                         </apex:column>
+                         <apex:column headerValue="Salutation">
+                         <apex:inputField value="{!con.salutation}"/>
+                         </apex:column>
+                         <apex:column headerValue="Description">
+                         <apex:inputField value="{!con.description}"/>
+                         </apex:column>                                         
+                    </apex:pageBlockTable>    
+        </apex:pageBlock>
+    </apex:form>   
+    <apex:form rendered="{! updateMode == false }" >
+        <apex:pageBlock title="{!account.name} Contacts" >
+            <apex:pagemessages />
+                <apex:pageBlockButtons >
+                 <!--   <apex:commandButton action="{!edit}" value="Edit Contacts"/> -->
+                </apex:pageBlockButtons>
+                     <apex:pageBlockTable value="{!account.contacts}" var="con">
+                         <apex:column value="{! con.name }"/>
+                         <apex:column value="{! con.salutation}"/>
+                         <apex:column value="{! con.description}"/>                                           
+                    </apex:pageBlockTable>    
+        </apex:pageBlock>
+    </apex:form>  
+</apex:page>

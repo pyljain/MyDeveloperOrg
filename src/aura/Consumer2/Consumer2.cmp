@@ -1,0 +1,4 @@
+<aura:component >
+	<aura:handler event="c:MyInputTypedEvent" action="{! c.showButton }"/>
+    <button>Test</button>
+</aura:component>

@@ -1,0 +1,15 @@
+<apex:page standardController="Contact" recordSetVar="contacts" >
+<apex:form >
+    <apex:pageblock title="Contact List" >
+        <apex:pageblocktable value="{!contacts}" var="c">
+            <apex:column value="{!c.id}"/>
+            <apex:column value="{!c.lastname}"/>
+            <apex:column value="{!c.firstname}"/>
+            <apex:column value="{!c.email}"/>
+        </apex:pageblocktable>
+        <apex:commandLink action="{!Previous}" value="Previous Page" rendered="{!HasPrevious}"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <apex:commandLink action="{!Next}" value="NextPage" rendered="{!HasNext}"/>        
+    </apex:pageblock>
+</apex:form> 
+</apex:page>

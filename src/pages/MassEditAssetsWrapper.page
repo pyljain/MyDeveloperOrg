@@ -1,0 +1,34 @@
+<apex:page controller="MassUpdateAssets" tabStyle="Asset" >
+  <!-- This page is to createa wrapper to be able to edit multiple assets -->
+   
+   <apex:form >
+       <apex:commandButton value="Mass Update" action="{! massUpdate }"/>
+   </apex:form>
+   <apex:form rendered="{! updateMode == true }">
+       <b>This is the update form</b>
+   </apex:form>
+   <apex:form rendered="{! updateMode == false }">
+      <apex:pageBlock >
+          <apex:pageblockButtons >
+              <apex:commandButton value="Select Assets" action="{!updateAssets}"/>
+              <apex:commandButton action="{!updaterecords}" value="Update"/>
+              <apex:commandButton action="{! saveRecords }" value="Save" />
+          </apex:pageblockButtons>
+              <apex:pageblockTable value="{!assetlist}" var="a">
+              
+                  <apex:column headerValue="Select" >
+                      <apex:inputCheckbox value="{!a.checked}" />
+                  </apex:column>            
+                  <apex:column value="{!a.ass.name}" headerValue="Name"/>  
+                  <apex:column headerValue="Description"> 
+                      <apex:inputfield value="{!a.ass.description}"/>    
+                  </apex:column>   
+                  <apex:column headerValue="Status">   
+                      <apex:inputfield value="{!a.ass.status}"/>
+                  </apex:column>    
+              </apex:pageblockTable>    
+    </apex:pageBlock>
+  </apex:form>  
+  
+
+</apex:page>

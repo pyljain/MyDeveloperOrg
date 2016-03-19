@@ -1,0 +1,6 @@
+<aura:component >
+    
+    <aura:registerEvent name="MyInputTypedEvent" type="c:MyInputTypedEvent"/>
+    
+    <input type="text" onkeyup="{! c.changed }" />
+</aura:component>

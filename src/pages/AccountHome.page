@@ -1,0 +1,21 @@
+<apex:page standardController="Order__c">
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="2" title="Create">
+            <apex:pageBlockSectionItem >
+                <apex:form >
+                    <apex:inputField value="{! Order__c.ParentAccount__c }"/>
+                    <apex:inputField value="{! Order__c.ProductName__c }"/>
+                    <apex:inputField value="{! Order__c.Status__c }"/>
+                    <apex:commandButton action="{! save }" value="Save"/>
+                    <button id="submit">Test</button>
+                </apex:form>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <script>
+        var btn = document.getElementById("submit");
+        btn.onclick = function() {
+            alert("Hello");
+        };
+    </script>
+</apex:page>

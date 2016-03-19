@@ -1,0 +1,18 @@
+<apex:page standardcontroller="account" extensions="createappointment" >
+<apex:form >
+  <apex:pageBlock >
+   <apex:pageBlockButtons location="top">  
+  <apex:commandButton action="{!bookappt }" value="Book Appointment" disabled="({!slotend }- {!slotstart} <= 0)" />
+  <b>  <apex:outputLabel value=" Start "> </apex:outputLabel> </b>
+       <apex:selectList value="{!slotstart}" multiselect="false" size="1"> 
+      <apex:selectOptions value="{!itemslist}"/>
+      </apex:selectList>
+   <b>  <apex:outputLabel value=" End "> </apex:outputLabel> </b>
+       <apex:selectList value="{!slotend}" multiselect="false" size="1"> 
+      <apex:selectOptions value="{!itemslist}"/>
+      </apex:selectList><p/>
+  
+   </apex:pageBlockButtons>
+   </apex:pageBlock>
+</apex:form>
+</apex:page>

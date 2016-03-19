@@ -1,0 +1,14 @@
+<apex:page controller="ProductSearch">
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:pageBlock >
+      <apex:pageBlockSection columns="3" title="Search Page" >
+          <apex:form >
+          <b> <apex:outputLabel value="Product Name" for="PName"/></b> 
+             <p/> 
+              <apex:inputtext value="{!productName}" id="PName" style="width:300px"/> 
+                <apex:commandButton action="{! save }" value="Search"/>   
+           </apex:form> 
+      </apex:pageBlockSection>
+  </apex:pageBlock>     
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    
+    <aura:attribute name="mytext" type="string" description="Test to use for my compoenent" />
+    
+    <div>
+		<p>My First Component</p>
+    	<h2>{! v.mytext }</h2>
+    </div>
+    <button onclick="{! c.hello }">Test</button>
+</aura:component>

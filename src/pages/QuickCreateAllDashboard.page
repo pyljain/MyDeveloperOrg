@@ -1,0 +1,31 @@
+<apex:page controller="QuickCreateAll">
+    <Apex:pageBlock >
+        <apex:pageBlockSection columns="2" title="Create Account">
+            <apex:pageblockSectionItem >
+                <apex:form >
+                    <apex:outputLabel value="Name" for="AName"/><br/>
+                         <apex:inputtext value="{! AccountString}" id="AName"/>
+                             <apex:commandButton action="{! save }" value="Save"/>         
+                </apex:form>
+            </apex:pageblockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="2" title="Create Contact">
+            <apex:pageblockSectionItem >
+                <apex:form >
+                    <apex:outputLabel value="Name" for="CName"/><br/>
+                         <apex:inputtext value="{! ContactString}" id="CName"/>
+                             <apex:commandButton action="{! saveContact }" value="Save"/>         
+                </apex:form>
+            </apex:pageblockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="2" title="Create Order">
+            <apex:pageblockSectionItem >
+                <apex:form >
+                    <apex:outputLabel value="Name" for="OName"/><br/>
+                         <apex:inputtext value="{! OrderString}" id="OName"/>
+                             <apex:commandButton action="{! saveOrder }" value="Save"/>         
+                </apex:form>
+            </apex:pageblockSectionItem>
+        </apex:pageBlockSection>
+    </Apex:pageBlock>  
+</apex:page>

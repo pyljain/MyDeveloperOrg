@@ -1,0 +1,4 @@
+<!-- message.evt -->
+<aura:event type="APPLICATION">
+    <aura:attribute name="accountIdentity" type="String"/>
+</aura:event>

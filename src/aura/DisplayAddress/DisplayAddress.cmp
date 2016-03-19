@@ -1,0 +1,12 @@
+<aura:component >
+     <aura:attribute name="Street" type="String" default="Wellesley Road" />
+     <aura:attribute name="City" type="String" default="London" />
+     <aura:attribute name="State" type="String" default="Surrey" />
+     <aura:attribute name="PostalCode" type="String" default="CR0 2FD" />     
+    
+     Street: {!v.Street}
+     State: {!v.State}
+     City: {!v.City}
+     Post Code: {!v.PostalCode}
+	
+</aura:component>

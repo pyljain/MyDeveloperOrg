@@ -1,0 +1,31 @@
+<aura:component >
+    
+    <aura:attribute name="record" type="sobject"/>  
+    <aura:attribute name="fields" type="String[]"/>   
+    <aura:attribute name="editMode" type="boolean" default="false" />
+    <aura:registerEvent name="query_editRecord" type="c:query_editRecord"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.constructArray}"/>
+
+    
+    <tr>
+        <aura:if isTrue="{! v.editMode == false }">
+            <aura:iteration var="r" items="{!v.rec}"> 
+                <td>{! r }</td>           
+            </aura:iteration>
+            <td>
+                <ui:button press="{! c.editRecord }" label="Edit" aura:id="editButton"></ui:button>
+            </td>
+        </aura:if>
+       
+        <aura:if isTrue="{! v.editMode == true }">
+            <aura:iteration var="r" items="{!v.rec}"> 
+                 <td><ui:inputText value="{!r }" aura:id="editText" /></td>
+    		</aura:iteration>
+            <td><ui:button press="{! c.editRecord }" label="Save" aura:id="saveButton"></ui:button></td>
+        </aura:if>
+        <td><ui:button press="{! c.delTask }" label="Delete"></ui:button></td>
+        
+    </tr>
+   
+</aura:component>

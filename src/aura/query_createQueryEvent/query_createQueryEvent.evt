@@ -1,0 +1,4 @@
+<!-- query_createQueryEvent.evt to trigger an event when a query string is entered-->
+<aura:event type="COMPONENT">
+    <aura:attribute name="queryString" type="String"/>
+</aura:event>

@@ -1,0 +1,6 @@
+<apex:page >
+  <!-- An account list view with multiple tabs on the lower pane that would change based on the Account Type -->
+  <h1>Congratulations</h1>
+  This is your new Page: DynamicAccountTabs
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>
